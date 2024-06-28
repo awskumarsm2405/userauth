@@ -21,6 +21,7 @@ jobs:
           echo $DOCKER_USERNAME
           echo $DOCKER_PASSWORD
           echo $PRODUCT_REPO_NAME
+          echo "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:$(date +%s)"
       - name: Docker login
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
