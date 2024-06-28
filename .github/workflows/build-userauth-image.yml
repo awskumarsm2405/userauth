@@ -26,6 +26,6 @@ jobs:
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - name: Build user service docker image
-        run: docker build . --file Dockerfile -t "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:$(date +%s)"
+        run: docker build . --file Dockerfile -t "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest"
       - name: Push user service docker image
-        run: docker push "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:$(date +%s)"
+        run: docker push "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest"
