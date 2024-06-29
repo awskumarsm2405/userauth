@@ -14,14 +14,31 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x] # Define a matrix of Node.js versions to test.There would be 3 jobs for 12.x, 14.x, 16.x
+
+
     steps:
       - uses: actions/checkout@v2
+      
       - name: Working Dir
         run: |
           echo $DOCKER_USERNAME
           echo $DOCKER_PASSWORD
           echo $PRODUCT_REPO_NAME
           echo "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:$(date +%s)"
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm' # Step 2: Use npm caching for faster dependency installs.
+
+      - name: Install Node.js dependencies
+        run: npm ci # Step 3: Perform a clean install of Node.js dependencies.
+
+      - name: Run tests
+        run: npm test 
       - name: Docker login
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
