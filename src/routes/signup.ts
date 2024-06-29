@@ -14,16 +14,16 @@ router.post(
     ],
     reqValidation,
     async (req: Request, res: Response) => {
-        console.log("status", 201)
         const { email, password, name, mobile} = req.body;
         const userObj = User.build({ email, password, name, mobile});
         const savedData = await userObj.save();
-        console.log("savedData", savedData)
+        if(!process.env.JWT_SECRET){
+            throw new Error("Something went wrong");
+        }
         req.session = {
             jwt: jwt.sign({ email: userObj.email, id:userObj.id  }, process.env.JWT_SECRET)
-
         }
-        console.log("status", 201)
+        
         return res.status(201).send({"message":"Signup successfull", "access_token":req.session.jwt, "user_id":userObj.id});
 
 

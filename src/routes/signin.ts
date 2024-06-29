@@ -16,13 +16,14 @@ router.post(
         const { email, password} = req.body;
         const userObj = await User.findOne({ "email": email});
         if(!userObj){
-            console.log("Invalid user credentials");
             throw new BadRequestError("Invalid user credentials");
         }
         const isMatched = await bcrypt.compare(password, userObj.password);
         if(!isMatched){
-            console.log("jjjInvalid user credentials");
             throw new BadRequestError("Invalid user credentials");
+        }
+        if(!process.env.JWT_SECRET){
+            throw new Error("Something went wrong");
         }
         req.session = {
             jwt: jwt.sign({ email: userObj.email, id:userObj.id  }, process.env.JWT_SECRET)

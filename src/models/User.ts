@@ -29,9 +29,7 @@ const userSchema = new Schema<UserDoc, UserModel>({
   userSchema.pre('save', async function(next) { // this line
     const user = this;
     if (!user.isModified('password')) return next();
-    console.log('just before saving...', user.password);
     user.password = await bcrypt.hash(user.password, 8);
-    console.log('just before saving111...', user.password);
     next();
 });
  userSchema.statics.build = function(attr: UserAttr){
