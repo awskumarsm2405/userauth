@@ -57,7 +57,7 @@ describe('hooks', async function () {
 describe('signup', () => {
   
   it('it should signup', async () => { 
-    
+    console.log(process.env);
     if(process.env.MONGO_URI) 
       {
         await mongoose.connect(process.env.MONGO_URI, {
