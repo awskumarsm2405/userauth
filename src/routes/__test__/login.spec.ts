@@ -18,6 +18,11 @@ describe('login api testing',  () => {
     process.env.MONGO_URI = mongoUri;
     //console.log(process.env);
   });
+  after(async () => {
+    console.log("after function executed for login functionalty")
+    await mongoose.connection.close();
+    console.log("after function executed for login functionalty")
+  });
 it("respond with detail about current user",async ()=>{
   if(process.env.MONGO_URI) await mongoose.connect(process.env.MONGO_URI, {});
 

@@ -70,6 +70,11 @@ describe('signup', () => {
     process.env.MONGO_URI = mongoUri;
     //console.log(process.env);
   });
+  after(async () => {
+    console.log("after function executed for signup functionalty")
+    await mongoose.connection.close();
+    console.log("after function executed for signup functionalty")
+  });
   it('it should signup', async () => { 
     
     if(process.env.MONGO_URI) 
