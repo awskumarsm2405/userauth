@@ -55,7 +55,10 @@ describe('hooks', async function () {
   // test cases
 });
 describe('signup', () => {
-  
+  beforeEach(function () {
+    console.log("before each function executed")
+    // runs before each test in this block
+  });
   it('it should signup', async () => { 
     import("dotenv/config")
     process.env.JWT_SECRET = 'asdfasdf';
