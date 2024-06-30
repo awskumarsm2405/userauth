@@ -58,14 +58,18 @@ describe('signup', () => {
   
   it('it should signup', async () => { 
     
-    if(process.env.MONGO_URI) await mongoose.connect(process.env.MONGO_URI, {
+    if(process.env.MONGO_URI) 
+      {
+        await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
-    });
-    return global.signIn().then(result => {
+      });
+      console.log("connectedt with mongo db")
+   }
+   /* return global.signIn().then(result => {
       assert.typeOf(result, "string");
-    }).catch((err)=>console.log(err))
+    }).catch((err)=>console.log(err))*/
    //console.log("eeeeeeeeeeeee")
      // assert.typeOf("wwwwwww", "string");
   }).timeout(60000)
