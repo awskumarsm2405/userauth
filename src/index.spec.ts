@@ -81,9 +81,9 @@ describe('signup', () => {
       });
       console.log("connectedt with mongo db")
    }
-   /* return global.signIn().then(result => {
+    return global.signIn().then(result => {
       assert.typeOf(result, "string");
-    }).catch((err)=>console.log(err))*/
+    }).catch((err)=>console.log(err))
    //console.log("eeeeeeeeeeeee")
      // assert.typeOf("wwwwwww", "string");
   }).timeout(60000)
