@@ -55,11 +55,8 @@ describe('hooks', async function () {
   // test cases
 });
 describe('signup', () => {
-  beforeEach(function () {
-    console.log("before each function executed")
-    // runs before each test in this block
-  });
-  it('it should signup', async () => { 
+  before(function () {
+    console.log("before function executed")
     import("dotenv/config")
     process.env.JWT_SECRET = 'asdfasdf';
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
@@ -71,7 +68,10 @@ describe('signup', () => {
     process.env.KAFKA_PASSWORD = "1wYI12Ukdi"
     const mongoUri = "mongodb+srv://kumar:7VnrEfN0Ci3nQ3Xo@cluster0.ovgqwzy.mongodb.net/ticketingnew";// mongo.getUri();
     process.env.MONGO_URI = mongoUri;
-    console.log(process.env);
+    //console.log(process.env);
+  });
+  it('it should signup', async () => { 
+    
     if(process.env.MONGO_URI) 
       {
         await mongoose.connect(process.env.MONGO_URI, {
