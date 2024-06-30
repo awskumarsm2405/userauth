@@ -61,7 +61,7 @@ describe('signup', () => {
     if(process.env.MONGO_URI) await mongoose.connect(process.env.MONGO_URI);
     return global.signIn().then(result => {
       assert.typeOf(result, "string");
-    }).catch(()=>assert.throws)
+    }).catch((err)=>console.log(err))
    //console.log("eeeeeeeeeeeee")
      // assert.typeOf("wwwwwww", "string");
   }).timeout(60000)
