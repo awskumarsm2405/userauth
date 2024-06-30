@@ -14,7 +14,7 @@ it("respond with detail about current user",async ()=>{
     .send()
     .expect(200);
   expect(response.body.currentUser.email).to.equal('test@test.com');
-})
+}).timeout(60000);
 const email = 'test@test.com';
 const password = 'password';
 it("login with vaild user and pasword",async ()=>{

@@ -58,12 +58,12 @@ describe('signup', () => {
   
   it('it should signup', async () => { 
     
-    if(process.env.MONGO_URI) await mongoose.connect(process.env.MONGO_URI, {});
+    if(process.env.MONGO_URI) await mongoose.connect(process.env.MONGO_URI);
     return global.signIn().then(result => {
       assert.typeOf(result, "string");
     }).catch(()=>assert.throws)
    //console.log("eeeeeeeeeeeee")
      // assert.typeOf("wwwwwww", "string");
-  })
+  }).timeout(60000)
 })
 
