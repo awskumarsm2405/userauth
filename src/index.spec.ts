@@ -57,6 +57,7 @@ describe('hooks', async function () {
 describe('signup', () => {
   
   it('it should signup', async () => { 
+    import("dotenv/config")
     console.log(process.env);
     if(process.env.MONGO_URI) 
       {
