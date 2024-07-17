@@ -21,6 +21,7 @@ import {app} from "./app";
  }
 exports.mochaHooks = {
     beforeEach: async function () {
+        console.log("process.env.JWT_SECRET",process.env.JWT_SECRET)
         const mongoUri = "mongodb+srv://kumar:7VnrEfN0Ci3nQ3Xo@cluster0.ovgqwzy.mongodb.net/ticketingnew";// mongo.getUri();
         process.env.MONGO_URI = mongoUri;
         await mongoose.connect(mongoUri, {});
