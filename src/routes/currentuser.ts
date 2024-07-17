@@ -1,7 +1,5 @@
 import express, { Express, Router, Request, Response } from "express";
-import { User, UserDoc } from './../models/User';
-import { body, validationResult } from 'express-validator';
-import {reqValidation, authenticateUser, BadRequestError} from '@skmnpm/common';
+import {authenticateUser, BadRequestError} from '@skmnpm/common';
 
 
 const router: Router = express.Router();

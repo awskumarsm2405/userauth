@@ -7,7 +7,7 @@
     "build": "npx tsc",
     "dev": "nodemon src/index.ts",
     "start": "node dist/index.js",
-    "test": "mocha --timeout 70000 -r ts-node/register src/**/*.spec.ts -r dotenv/config --dotenv_config_path=.env.test"
+    "test": "mocha --timeout 70000 -r dotenv/config -r ts-node/register -r src/mocha.hooks.ts src/**/*.spec.ts --dotenv_config_path=.env.test"
   },
   "keywords": [],
   "author": "",
